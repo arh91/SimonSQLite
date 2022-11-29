@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ThirdActivity">
+
+
+    <GridLayout
+        android:id="@+id/gridLayout"
+        android:layout_width="350dp"
+        android:layout_height="362dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:columnCount="2"
+        android:rowCount="2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.444"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="135dp">
+
+        <Button
+            android:id="@+id/greenButton"
+            android:layout_width="174dp"
+            android:layout_height="182dp"
+            android:layout_row="0"
+            android:layout_column="0"
+            android:background="@color/verde"
+            android:onClick="clickarBoton" />
+
+        <Button
+            android:id="@+id/blueButton"
+            android:layout_width="175dp"
+            android:layout_height="182dp"
+            android:layout_row="1"
+            android:layout_column="1"
+            android:background="@color/azul"
+            android:onClick="clickarBoton" />
+
+        <Button
+            android:id="@+id/redButton"
+            android:layout_width="175dp"
+            android:layout_height="182dp"
+            android:layout_row="1"
+            android:layout_column="0"
+            android:background="@color/rojo"
+            android:onClick="clickarBoton" />
+
+
+        <Button
+            android:id="@+id/yellowButton"
+            android:layout_width="175dp"
+            android:layout_height="182dp"
+            android:layout_row="0"
+            android:layout_column="1"
+            android:background="@color/amarillo"
+            android:onClick="clickarBoton" />
+
+
+    </GridLayout>
+
+    <Button
+        android:id="@+id/playButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="132dp"
+        android:layout_marginTop="432dp"
+        android:layout_weight="1"
+        android:onClick="generarSecuencia"
+        android:text="EMPEZAR"
+        app:layout_constraintStart_toStartOf="@+id/gridLayout"
+        app:layout_constraintTop_toTopOf="@+id/gridLayout" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
