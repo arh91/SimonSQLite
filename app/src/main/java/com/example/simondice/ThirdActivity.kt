@@ -8,6 +8,8 @@ import android.view.View
 import android.widget.Button
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.room.Room
+import com.example.prueba.SimonDatabase
 import kotlinx.coroutines.*
 
 class ThirdActivity : AppCompatActivity()  {
@@ -27,6 +29,11 @@ class ThirdActivity : AppCompatActivity()  {
     var puntuacion = 0
     var record = 0
     var estado = "off"
+
+    val db = Room.databaseBuilder(
+        applicationContext,
+        SimonDatabase::class.java, "simonDB"
+    ).build()
 
     protected override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

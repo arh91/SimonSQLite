@@ -4,6 +4,9 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
+import androidx.room.Room
+import com.example.prueba.SimonDatabase
+import com.example.prueba.Usuario
 
 
 class MainActivity : AppCompatActivity() {
@@ -17,5 +20,14 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, SecondActivity::class.java)
             startActivity(intent)
         }
+
+        val db = Room.databaseBuilder(
+            applicationContext,
+            SimonDatabase::class.java, "simonDB"
+        ).build()
+
+        val usuarioDao = db.usuarioDao()
+        val users: List<Usuario> = usuarioDao.getAll()
+
     }
 }
