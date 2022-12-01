@@ -4,30 +4,30 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".`SecondActivity.kt`">
+    tools:context="SecondActivity">
 
     <EditText
-        android:id="@+id/editTextTextPersonName"
+        android:id="@+id/editTextNombre"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Name"
+        android:text="Nombre"
         tools:layout_editor_absoluteX="100dp"
         tools:layout_editor_absoluteY="128dp" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName3"
+        android:id="@+id/editTextNickname"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Nickname"
+        android:text="Nick"
         tools:layout_editor_absoluteX="105dp"
         tools:layout_editor_absoluteY="335dp" />
 
     <TextView
-        android:id="@+id/textViewContrasenha"
+        android:id="@+id/textViewApellido"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Apellido"
@@ -35,15 +35,15 @@
         tools:layout_editor_absoluteY="207dp" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/textViewNickname"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Nickname"
+        android:text="Nick"
         tools:layout_editor_absoluteX="117dp"
         tools:layout_editor_absoluteY="308dp" />
 
     <TextView
-        android:id="@+id/textViewNickname"
+        android:id="@+id/textViewNombre"
         android:layout_width="137dp"
         android:layout_height="18dp"
         android:text="Nombre"
@@ -51,7 +51,7 @@
         tools:layout_editor_absoluteY="95dp" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName2"
+        android:id="@+id/editTextApellido"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -69,7 +69,7 @@
         tools:layout_editor_absoluteY="559dp" />
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/textViewContraseña"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Contraseña"
@@ -77,11 +77,11 @@
         tools:layout_editor_absoluteY="418dp" />
 
     <EditText
-        android:id="@+id/editTextTextPassword"
+        android:id="@+id/editTextContraseña"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:inputType="textPassword"
+        android:inputType="Contraseña"
         tools:layout_editor_absoluteX="110dp"
         tools:layout_editor_absoluteY="447dp" />
 
