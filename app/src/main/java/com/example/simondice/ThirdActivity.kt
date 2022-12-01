@@ -10,9 +10,11 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.room.Room
 import com.example.prueba.SimonDatabase
+import com.example.prueba.Usuario
 import kotlinx.coroutines.*
 
 class ThirdActivity : AppCompatActivity()  {
+
 
     var iniciar: Button? = null
     var espera1 = Handler()
@@ -30,10 +32,14 @@ class ThirdActivity : AppCompatActivity()  {
     var record = 0
     var estado = "off"
 
+    val usuario = Usuario()
+
     val db = Room.databaseBuilder(
         applicationContext,
         SimonDatabase::class.java, "simonDB"
     ).build()
+
+    val usuarioDao = db.usuarioDao()
 
     protected override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -114,12 +120,14 @@ class ThirdActivity : AppCompatActivity()  {
                     /*espera1.postDelayed({
                         b.setBackgroundResource(R.color.verdefuerte)
                         sonido[2]!!.start()
-                    }, 1000)*/delay(1000)
+                    }, 1000)*/
+                    delay(1000)
                 } else {
                     /*espera1.postDelayed({
                         b.setBackgroundResource(R.color.amarillofuerte)
                         sonido[3]!!.start()
-                    }, 1000)*/delay(1000)
+                    }, 1000)*/
+                    delay(1000)
                 }
                 espera2.postDelayed({ resetear(b.id) }, timeOff.toLong())
                 timeOn += 400
@@ -185,6 +193,7 @@ class ThirdActivity : AppCompatActivity()  {
         var acertados = 0
         for (i in numeros.indices) {
             if (numeros[i] != ordenJugador[i]) {
+                ronda = 0
                 estado = "off"
                 Toast.makeText(this, "Lo siento, has fallado.", Toast.LENGTH_SHORT).show()
             } else {
@@ -192,31 +201,21 @@ class ThirdActivity : AppCompatActivity()  {
             }
             if (acertados == 4) {
                 ronda+=1
-                puntuacion+=1
                 Toast.makeText(this, "Enhorabuena, has acertado!", Toast.LENGTH_SHORT).show()
-                Toast.makeText(this, ronda.toString()+"º ronda", Toast.LENGTH_SHORT).show();
-                if(puntuacion==1) {
-                    Toast.makeText(this, puntuacion.toString() + " punto", Toast.LENGTH_SHORT).show();
-                }
-                if(puntuacion > 1){
-                    Toast.makeText(this, puntuacion.toString() + " puntos", Toast.LENGTH_SHORT).show();
-                }
-                if(puntuacion>record){
-                    record = puntuacion
-                    if(record == 1) {
-                        Toast.makeText(
-                            this, "Nuevo record: " + record.toString() + " punto", Toast.LENGTH_SHORT).show();
-                    }
-                    if(record > 1) {
-                        Toast.makeText(this, "Nuevo record: " + record.toString() + " puntos", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Ronda "+ronda.toString(), Toast.LENGTH_SHORT).show();
+
+                if(ronda>record){
+                        record = ronda
+                        usuario.uRecord = record
+                        usuarioDao.update(usuario)
                     }
                 }
-                //generarSecuencia(v)
+                generarSecuencia(v)
             }
             enabledPlay = false
             botonesPulsados = 0
             numeros = IntArray(4)
             ordenJugador = IntArray(4)
         }
-        puntuacion = 0
+
     }

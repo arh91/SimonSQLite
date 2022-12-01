@@ -27,8 +27,8 @@ class MainActivity : AppCompatActivity() {
         val nick = findViewById<EditText>(R.id.editTextNickname)
         val contraseña = findViewById<EditText>(R.id.editTextContraseña)
 
-        val nickIntroducido = nick.text;
-        val contraseñaIntroducida = contraseña.text;
+        val nickIntroducido = nick.text.toString()
+        val contraseñaIntroducida = contraseña.text.toString()
 
         val usuarioDao = db.usuarioDao()
         val existeNick = usuarioDao.checkNick(nickIntroducido, usuario)
@@ -36,17 +36,22 @@ class MainActivity : AppCompatActivity() {
 
         val inicioBtn=findViewById<Button>(R.id.btnIniciarSesion)
         inicioBtn.setOnClickListener {
-            /*if(existeNick == 0){
-                println("El nick introducido no existe")
+            if(existeNick == 0){
+                Toast.makeText(this, "El nick introducido no existe", Toast.LENGTH_LONG).show()
             }else{
-
-            }*/
+                if(contraseñaIntroducida != contraseñaRegistrada){
+                    Toast.makeText(this, "Clave incorrecta", Toast.LENGTH_LONG).show()
+                }else{
+                    val intentThird = Intent(this, ThirdActivity::class.java)
+                    startActivity(intentThird)
+                }
+            }
         }
 
         val registrarseBtn=findViewById<Button>(R.id.btnRegistrarse)
         registrarseBtn.setOnClickListener {
-            val intent = Intent(this, SecondActivity::class.java)
-            startActivity(intent)
+            val intentTwo = Intent(this, SecondActivity::class.java)
+            startActivity(intentTwo)
         }
 
     }

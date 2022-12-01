@@ -14,6 +14,11 @@ class SecondActivity : AppCompatActivity() {
 
     val usuario = Usuario()
 
+    val db = Room.databaseBuilder(
+        applicationContext,
+        SimonDatabase::class.java, "simonDB"
+    ).build()
+
     protected override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_second)
@@ -23,23 +28,24 @@ class SecondActivity : AppCompatActivity() {
         val nick = findViewById<EditText>(R.id.editTextNickname)
         val contraseña = findViewById<EditText>(R.id.editTextContraseña)
 
-        val nombreIntroducido = nombre.text;
-        val apellidoIntroducido = apellido.text;
-        val nickIntroducido = nick.text;
-        val contraseñaIntroducida = contraseña.text;
-
-        val db = Room.databaseBuilder(
-            applicationContext,
-            SimonDatabase::class.java, "simonDB"
-        ).build()
+        val nombreIntroducido = nombre.text.toString()
+        val apellidoIntroducido = apellido.text.toString()
+        val nickIntroducido = nick.text.toString()
+        val contraseñaIntroducida = contraseña.text.toString()
 
         val registroBtn=findViewById<Button>(R.id.btnRegistro)
         registroBtn.setOnClickListener {
+            usuario.nick = nickIntroducido
+            usuario.nombre = nombreIntroducido
+            usuario.primerApellido = apellidoIntroducido
+            usuario.contraseña = contraseñaIntroducida
+            usuario.uRecord = 0
+
             val usuarioDao = db.usuarioDao()
             usuarioDao.insertUser(usuario)
 
-            val intent = Intent(this, ThirdActivity::class.java)
-            startActivity(intent)
+            val intentThird = Intent(this, ThirdActivity::class.java)
+            startActivity(intentThird)
         }
 
 

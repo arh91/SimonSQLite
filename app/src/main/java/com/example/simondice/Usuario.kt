@@ -7,11 +7,11 @@ import androidx.room.Entity
 @Entity(tableName = "Usuario")
 class Usuario(
     @field:ColumnInfo(name = "nick")
-    @field:PrimaryKey val nick: String,
+    @field:PrimaryKey var nick: String,
     @field:ColumnInfo(name = "nombre") var nombre: String,
     @field:ColumnInfo(name = "primer_apellido") var primerApellido: String,
-    @field:ColumnInfo(name = "contrasenha") private var contraseña: String,
-    @field:ColumnInfo(name = "record") private var uRecord: Int
+    @field:ColumnInfo(name = "contrasenha") var contraseña: String,
+    @field:ColumnInfo(name = "record") var uRecord: Int
 
 )
 
