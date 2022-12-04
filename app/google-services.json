@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "283077999659",
+    "project_id": "simondice-52106",
+    "storage_bucket": "simondice-52106.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:283077999659:android:bafd0a6dab2e935a357e6e",
+        "android_client_info": {
+          "package_name": "com.example.simondice"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "283077999659-rekshe7i6k7gf5r56tn8hbol3kr4jhpk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCWTcyGGl8rqQuyqRI4ZW4xifErV09i__8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "283077999659-rekshe7i6k7gf5r56tn8hbol3kr4jhpk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
