@@ -180,4 +180,30 @@ abstract class ThirdActivity : AppCompatActivity()  {
             ordenJugador = IntArray(4)
         }
 
+
+    override fun onStart(){
+        super.onStart();
+        Log.d("Estado","onStart")
+    }
+
+    override fun onResume(){
+        super.onResume();
+        Log.d("Estado","onResume")
+    }
+
+    override fun onPause() {
+        super.onPause();
+        Log.d("Estado","onResume")
+    }
+
+    override fun onRestart() {
+        super.onRestart();
+        Log.d("Estado","onRestart");
+    }
+
+    override fun onDestroy(){
+        super.onDestroy();
+        Log.d("Estado","onDestroy")
+    }
+
     }

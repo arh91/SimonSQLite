@@ -2,6 +2,7 @@ package com.example.simondice
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
@@ -45,5 +46,30 @@ class SecondActivity : AppCompatActivity() {
         }
 
 
+    }
+
+    override fun onStart(){
+        super.onStart();
+        Log.d("Estado","onStart")
+    }
+
+    override fun onResume(){
+        super.onResume();
+        Log.d("Estado","onResume")
+    }
+
+    override fun onPause() {
+        super.onPause();
+        Log.d("Estado","onResume")
+    }
+
+    override fun onRestart() {
+        super.onRestart();
+        Log.d("Estado","onRestart");
+    }
+
+    override fun onDestroy(){
+        super.onDestroy();
+        Log.d("Estado","onDestroy")
     }
 }
