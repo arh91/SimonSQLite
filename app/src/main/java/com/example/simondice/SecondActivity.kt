@@ -8,11 +8,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.room.Room
 import com.example.prueba.SimonDatabase
 import com.example.prueba.Usuario
-import kotlinx.coroutines.*
 
 class SecondActivity : AppCompatActivity() {
 
-    val usuario = Usuario()
+    //val usuario = Usuario()
 
     val db = Room.databaseBuilder(
         applicationContext,
@@ -35,17 +34,14 @@ class SecondActivity : AppCompatActivity() {
 
         val registroBtn=findViewById<Button>(R.id.btnRegistro)
         registroBtn.setOnClickListener {
-            usuario.nick = nickIntroducido
-            usuario.nombre = nombreIntroducido
-            usuario.primerApellido = apellidoIntroducido
-            usuario.contraseña = contraseñaIntroducida
-            usuario.uRecord = 0
 
+            val usuario = Usuario(nickIntroducido, nombreIntroducido, apellidoIntroducido, contraseñaIntroducida, 0)
             val usuarioDao = db.usuarioDao()
             usuarioDao.insertUser(usuario)
+            println("Registro completado")
 
-            val intentThird = Intent(this, ThirdActivity::class.java)
-            startActivity(intentThird)
+            val intentMain = Intent(this, MainActivity::class.java)
+            startActivity(intentMain)
         }
 
 

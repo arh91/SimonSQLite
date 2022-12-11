@@ -31,9 +31,17 @@ interface UsuarioDao {
     //---------------------------------------------------------------------------------------------------
 
     @Query("SELECT count(nick) FROM Usuario WHERE nick LIKE :nick")
-    fun checkNick(nick: String, usuario:Usuario)
+    fun checkNick(nick: String): Int
 
     @Query("SELECT contrasenha FROM Usuario WHERE nick LIKE :nick")
-    fun getPassword(nick: String, usuario:Usuario)
+    fun getPassword(nick: String): String
 
+    @Query("SELECT nombre FROM Usuario WHERE nick LIKE :nick")
+    fun getName(nick: String): String
+
+    @Query("SELECT primer_apellido FROM Usuario WHERE nick LIKE :nick")
+    fun getSurname(nick: String): String
+
+    @Query("SELECT record FROM Usuario WHERE nick LIKE :nick")
+    fun getRecord(nick: String): Int
 }

@@ -13,7 +13,7 @@ import com.example.prueba.SimonDatabase
 import com.example.prueba.Usuario
 import kotlinx.coroutines.*
 
-class ThirdActivity : AppCompatActivity()  {
+abstract class ThirdActivity : AppCompatActivity()  {
 
 
     var iniciar: Button? = null
@@ -29,10 +29,15 @@ class ThirdActivity : AppCompatActivity()  {
     var enabledPlay = false
     var ronda = 0
     var puntuacion = 0
-    var record = 0
     var estado = "off"
 
-    val usuario = Usuario()
+    lateinit var nick:String
+    lateinit var nombre:String
+    lateinit var primerApellido:String
+    lateinit var contraseña:String
+    abstract var record:Int
+
+    val usuario = Usuario(nick, nombre, primerApellido, contraseña, record)
 
     val db = Room.databaseBuilder(
         applicationContext,
@@ -58,10 +63,17 @@ class ThirdActivity : AppCompatActivity()  {
         sonido[2] = MediaPlayer.create(this, R.raw.vaja)
         sonido[3] = MediaPlayer.create(this, R.raw.ladrilloroto)
 
-        /*iniciar?.setOnClickListener{
-            // cada vez que le doy al click empieza la cuenta atrás
+        nick = intent.getStringExtra("nickIntroducido").toString()
+        nombre = usuarioDao.getName(nick)
+        primerApellido = usuarioDao.getSurname(nick)
+        contraseña = intent.getStringExtra("contraseñaIntroducida").toString()
+        record = usuarioDao.getRecord(nick)
+
+
+        iniciar?.setOnClickListener{
+
             generarSecuencia(iniciar!!)
-        }*/
+        }
     }
 
     fun clickarBoton(v: View) {
@@ -111,22 +123,10 @@ class ThirdActivity : AppCompatActivity()  {
                     }, 1000)*/
                     delay(1000)
                 } else if (b.id == R.id.redButton) {
-                    /*espera1.postDelayed({
-                        b.setBackgroundResource(R.color.rojofuerte)
-                        sonido[1]!!.start()
-                    }, 1000)*/
                     delay(1000)
                 } else if (b.id == R.id.greenButton) {
-                    /*espera1.postDelayed({
-                        b.setBackgroundResource(R.color.verdefuerte)
-                        sonido[2]!!.start()
-                    }, 1000)*/
                     delay(1000)
                 } else {
-                    /*espera1.postDelayed({
-                        b.setBackgroundResource(R.color.amarillofuerte)
-                        sonido[3]!!.start()
-                    }, 1000)*/
                     delay(1000)
                 }
                 espera2.postDelayed({ resetear(b.id) }, timeOff.toLong())
@@ -139,43 +139,6 @@ class ThirdActivity : AppCompatActivity()  {
         Log.d("Courutina","Lanzada:" + " " + jobIniciarPartida.toString()) // esto ocurre a espensas de la courutina
     }
 
-
-
-    /*fun generarSecuencia(v: View?) {
-        enabledPlay = true
-
-        for (i in numeros.indices) {
-            numeros[i] = (Math.random() * 4).toInt()
-            val b = botones[numeros[i]]
-            println(numeros[i])
-            if (b!!.id == R.id.blueButton) {
-                espera1.postDelayed({
-                    b.setBackgroundResource(R.color.azulfuerte)
-                    sonido[0]!!.start()
-                }, 1000)
-            } else if (b.id == R.id.redButton) {
-                espera1.postDelayed({
-                    b.setBackgroundResource(R.color.rojofuerte)
-                    sonido[1]!!.start()
-                }, 1000)
-            } else if (b.id == R.id.greenButton) {
-                espera1.postDelayed({
-                    b.setBackgroundResource(R.color.verdefuerte)
-                    sonido[2]!!.start()
-                }, 1000)
-            } else {
-                espera1.postDelayed({
-                    b.setBackgroundResource(R.color.amarillofuerte)
-                    sonido[3]!!.start()
-                }, 1000)
-            }
-            espera2.postDelayed({ resetear(b.id) }, timeOff.toLong())
-            timeOn += 400
-            timeOff += 200
-        }
-        timeOn = 1000
-        timeOff = 1000
-    }*/
 
     fun resetear(id: Int) {
         if (id == R.id.blueButton) {
@@ -207,10 +170,9 @@ class ThirdActivity : AppCompatActivity()  {
                 if(ronda>record){
                         record = ronda
                         usuario.uRecord = record
-                        usuarioDao.update(usuario)
                     }
                 }
-                generarSecuencia(v)
+                generarSecuencia(iniciar!!)
             }
             enabledPlay = false
             botonesPulsados = 0
