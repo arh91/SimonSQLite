@@ -50,7 +50,7 @@ abstract class ThirdActivity : AppCompatActivity()  {
     val usuarioDao = db.usuarioDao()
 
     val miModelo by viewModels<MyViewModel>()
-    val datosDao = miModelo.db.usuarioDao()
+    //val datosDao = miModelo.db.usuarioDao()
 
     protected override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -192,13 +192,13 @@ abstract class ThirdActivity : AppCompatActivity()  {
                 setRondas(ronda)
 
             }
-                if(ronda>record){
-                    record = ronda
-                    usuario.uRecord = record
-                }
+            if(ronda>record){
+                record = ronda
+                usuario.uRecord = record
             }
-            generarSecuencia(iniciar!!)
         }
+        generarSecuencia(iniciar!!)
+
         enabledPlay = false
         botonesPulsados = 0
         numeros = IntArray(4)
