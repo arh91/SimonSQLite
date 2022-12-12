@@ -6,6 +6,7 @@ import android.os.Handler
 import android.util.Log
 import android.view.View
 import android.widget.Button
+import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -157,6 +158,11 @@ abstract class ThirdActivity : AppCompatActivity()  {
         }
     }
 
+    fun setRondas(rondas: Int){
+        val wave = findViewById<TextView>(R.id.editTextRonda)
+        wave.setText(rondas)
+    }
+
     fun comprobarSecuencia() {
         var acertados = 0
         for (i in numeros.indices) {
@@ -181,11 +187,11 @@ abstract class ThirdActivity : AppCompatActivity()  {
                             println("Array: "+listaRondas.toString())
                         }
                     )
-}
-s
+
                 )
                 setRondas(ronda)
 
+            }
                 if(ronda>record){
                     record = ronda
                     usuario.uRecord = record
