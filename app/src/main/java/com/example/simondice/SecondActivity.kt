@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.room.Room
 import com.example.prueba.SimonDatabase
@@ -18,6 +19,7 @@ class SecondActivity : AppCompatActivity() {
         applicationContext,
         SimonDatabase::class.java, "simonDB"
     ).build()
+    val usuarioDao = db.usuarioDao()
 
     protected override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,16 +35,27 @@ class SecondActivity : AppCompatActivity() {
         val nickIntroducido = nick.text.toString()
         val contraseñaIntroducida = contraseña.text.toString()
 
+        val existeNick = usuarioDao.checkNick(nickIntroducido)
+
         val registroBtn=findViewById<Button>(R.id.btnRegistro)
         registroBtn.setOnClickListener {
 
-            val usuario = Usuario(nickIntroducido, nombreIntroducido, apellidoIntroducido, contraseñaIntroducida, 0)
-            val usuarioDao = db.usuarioDao()
-            usuarioDao.insertUser(usuario)
-            println("Registro completado")
+            if(existeNick > 0){
+                Toast.makeText(this, "El nick introducido ya existe", Toast.LENGTH_LONG).show()
+            }else {
+                val usuario = Usuario(
+                    nickIntroducido,
+                    nombreIntroducido,
+                    apellidoIntroducido,
+                    contraseñaIntroducida,
+                    0
+                )
+                usuarioDao.insertUser(usuario)
+                println("Registro completado")
 
-            val intentMain = Intent(this, MainActivity::class.java)
-            startActivity(intentMain)
+                val intentMain = Intent(this, MainActivity::class.java)
+                startActivity(intentMain)
+            }
         }
 
 
