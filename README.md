@@ -43,6 +43,6 @@ Cuando el usuario supere un record establecido, éste se actualizará en la base
 
 
 
-Esta aplicación se podrá ejecutar en los dispositivos Android de la versión Android 8.0 en adelante.
+Esta aplicación se podrá ejecutar en los dispositivos Android a partir de la versión Android 8.0 en adelante.
 
 
