@@ -14,6 +14,7 @@ En la pantalla número uno también hay un botón que da la opción a crearte un
 Al clickar dicho botón, la aplicación nos llevará a la pantalla número 2 (la pantalla para el registro).
 
 
+
 Pantalla número 2 (SecondActivity.kt):
 En la pantalla número 2 es la pantalla en que el usuario podrá crearse una nueva cuenta si aún no la tiene.
 En dicha pantalla, se le pedirá al usuario que rellene los siguientes campos para el registro:
@@ -24,6 +25,7 @@ En dicha pantalla, se le pedirá al usuario que rellene los siguientes campos pa
 
 Al hacer click en botón Registrarse, el programa primero comprobará que el nick introducido no exista ya en la base de datos.
 Si el nick ya existe se le avisará al usuario para que lo cambie, y en caso contrario se registrarán todos los datos introducidos para crear la nueva cuenta de usuario en nuestra base de datos, y se llevará al usuario de nuevo a la pantalla número uno, donde se le pedirá iniciar sesión con su nueva cuenta.
+
 
 
 Pantalla número 3 (ThirdActivity.kt):
@@ -38,6 +40,7 @@ la misma tal y como le fue mostrada.
 Si falla al intentar repetir la secuencia, vuelve de nuevo a la ronda 0.
 Si acierta la secuencia, pasa a la siguiente ronda, e irá subiendo rondas mientras siga acertando de forma consecutiva las secuencias que se le muestran.
 Cuando el usuario supere un record establecido, éste se actualizará en la base de datos.
+
 
 
 Esta aplicación se podrá ejecutar en los dispositivos Android de la versión Android 8.0 en adelante.
