@@ -1,4 +1,6 @@
 <resources>
 
     <string name="app_name">SimonDice</string>
+    <string name="ronda">Ronda</string>
+    <string name="record">Record</string>
 </resources>

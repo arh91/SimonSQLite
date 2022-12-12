@@ -75,7 +75,6 @@ abstract class ThirdActivity : AppCompatActivity()  {
         contraseña = intent.getStringExtra("contraseñaIntroducida").toString()
         record = usuarioDao.getRecord(nick)
 
-
         iniciar?.setOnClickListener{
 
             generarSecuencia(iniciar!!)
@@ -158,9 +157,16 @@ abstract class ThirdActivity : AppCompatActivity()  {
         }
     }
 
-    fun setRondas(rondas: Int){
-        val wave = findViewById<TextView>(R.id.editTextRonda)
-        wave.setText(rondas)
+    @JvmName("setRonda1")
+    fun setRonda(ronda: Int){
+        var indicadorRonda = findViewById<TextView>(R.id.textViewRonda)
+        indicadorRonda.setText("Ronda: "+ronda)
+    }
+
+    @JvmName("setRecord1")
+    fun setRecord(record: Int){
+        var indicadorRecord = findViewById<TextView>(R.id.textViewRecord)
+        indicadorRecord.setText("Record: "+record)
     }
 
     fun comprobarSecuencia() {
@@ -189,7 +195,6 @@ abstract class ThirdActivity : AppCompatActivity()  {
                     )
 
                 )
-                setRondas(ronda)
 
             }
             if(ronda>record){
@@ -197,7 +202,6 @@ abstract class ThirdActivity : AppCompatActivity()  {
                 usuario.uRecord = record
             }
         }
-        generarSecuencia(iniciar!!)
 
         enabledPlay = false
         botonesPulsados = 0
@@ -213,6 +217,8 @@ abstract class ThirdActivity : AppCompatActivity()  {
 
     override fun onResume(){
         super.onResume();
+        setRonda(ronda)
+        setRecord(record)
         Log.d("Estado","onResume")
     }
 
