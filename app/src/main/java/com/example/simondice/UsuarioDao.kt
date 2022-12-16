@@ -14,7 +14,7 @@ interface UsuarioDao {
     fun insertUser(usuario: Usuario)  //Función que inserta un objeto Usuario con los valores que le hayamos asignado.
 
     @Update
-    fun update(usuario: Usuario) 
+    fun update(usuario: Usuario)
 
     @Delete
     fun deleteUser(usuario: Usuario)
